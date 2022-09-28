@@ -1,39 +1,38 @@
-# 進貨成本
-in_c = 0
-# 零售價格
-in_r = 0
-# 需求的可能數
-in_N = 0
-# 訂貨量
-in_q = 0
-# 期望ratio
-in_p = []
-
-in_c = int(input())
-if in_c <= 1 or in_c >= 100:
+### get c
+c = int(input())
+if c <= 1 or c >= 100:
     print("c is out of range !!")
     exit(1)
 
-in_r = int(input())
-if in_r <= 1 or in_r >= 100:
+### get r
+r = int(input())
+if r <= 1 or r >= 100:
     print("r is out of range !!")
     exit(1)
-if in_r < in_c:
+if r < c:
     print("r is smaller thrn c !!")
     exit(1)
 
-in_N = int(input()) + 1
-if in_N != 9:
+### get N
+N = int(input())
+if N != 8:
     print("N must be 8 !!")
     exit(1)
 
-in_q = int(input())
+### get q
+q = int(input())
 
-for i in range(in_N):
-    in_p.append(float(input()))
+### get p[]
+p = []
+for i in range(N + 1):
+    # p.append(float(input()))
+    if (i < q  + 1):
+        p.append(float(input()))
+    else:
+        p[q] += float(input())
 
-out_money = 0
-for i in range(in_N):
-    out_money += ((i * in_r) - abs(in_q - i) * in_c) * in_p[i]
+exp_money = 0
+for i in range(q + 1):
+    exp_money += ((i * r) - q * c) * p[i]
 
-print("out_money: ", out_money)
+print(exp_money)
